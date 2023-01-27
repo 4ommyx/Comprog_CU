@@ -1,6 +1,8 @@
 def check_digit(n):
     total = 0
     n = list(n)
+    if len(n)<=11:
+        return 'ERROR'
     print('string list :',n)
     for j in range(len(n)):
         n[j] = int(n[j])
