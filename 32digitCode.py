@@ -6,7 +6,7 @@ lis2 = []
 lis3 = []
 lis4 = []
 code = input("code : ")
-
+print(len(code))
 # string --> list
 lis0 = list(code)
 print(lis0)
@@ -40,7 +40,9 @@ print("total2",total2)
 # step3
 total3 = total1+total2+10000
 total3 = str(total3)
+print(total3)
 
+li3 = list(total3)
 # for l in range(len(total3)):
 #     lis3.append(total3[l])
 

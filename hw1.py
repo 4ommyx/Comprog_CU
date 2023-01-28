@@ -18,42 +18,64 @@ def distance(r1,r2):
 
     return ((x2-x1)**2 + (y2-y1)**2)**(0.5)
 
-
-st = 0
 def intersection(r1, r2):
-    global st 
-
     lisX = []
     lisY = []
 
-    x1R = r1[0]+r1[2]
+    x1 = r1[0]
+    x2 = r1[0] + r1[2]
+    x3 = r2[0]
+    x4 = r2[0] + r2[2]
+    lisX.append(x1)
+    lisX.append(x2)
+    lisX.append(x3)
+    lisX.append(x4)
 
-    y1H = r1[1]
-
-    x2L = r2[0]
-
-    y2L = r2[1]-r2[3]
-
-    lisX.append(x1R)
-    lisX.append(x2L)
-
-    lisY.append(y1H)
-    lisY.append(y2L)
-
+    # print("bf :",lisX)
     lisX.sort()
+    # print("af :",lisX)
+
+    y1 = r1[1]
+    y2 = r1[1] - r1[3]
+    y3 = r2[1]
+    y4 = r2[1] - r2[3]
+    lisY.append(y1)
+    lisY.append(y2)
+    lisY.append(y3)
+    lisY.append(y4)
+
+    # print("bf :",lisY)
     lisY.sort()
+    # print("af :",lisY)
 
-    print(lisX)
-    print(lisY)
-    
-    jMax = lisY[1]
-    jMin = lisX[]
+    w = lisX[2]-lisX[1]
+    h = lisY[2]-lisY[1]
 
-    for j in range(1,4):
-        for i in range(1,3):
-            st+=0.25
+    return w*h
 
-    print(st)
+def union(r1,r2):
+    # x1 = r1[2] - r1[0]
+    # y1 = r1[1] - r1[3]
+
+    # x2 = r2[2] - r2[0]
+    # y2 = r2[1] - r2[3]
+
+    areaR1 = r1[2]*r1[3]
+    areaR2 = r2[2]*r2[3]
+
+    # print(areaR1,areaR2)
+
+    itsec = intersection(r1,r2)
+
+    return (areaR1 + areaR2) - itsec
+
+def iou(r1,r2):
+
+    iou = intersection(r1,r2)/union(r1,r2)
+
+    return iou
+
+
 
 # x,y,w,-h
 r1=[1.0, 4.0, 1.5, 2.0]
@@ -61,11 +83,15 @@ r2=[2.0, 5.0, 2.5, 2.0]
 r3=[4.0, 5.5, 1.5, 3.5]
 r4=[6.0, 4.5, 1.5, 2.0]
 r5=[5.75, 7.0, 2.0, 5.0]
-
 # print(center(r1))
 # print(center(r2))
 # print(round(distance(r1,r2),2))
 # print(round(distance(r3,r4),2))
-
-intersection(r1,r2)
+# print(intersection(r1,r2))
+# print(intersection(r2,r3))
+# print(intersection(r4,r5))
+# print(union(r1,r2))
+# print(union(r2,r3))
+# print(union(r4,r5))
+print(round(iou(r1,r2),2))
 

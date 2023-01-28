@@ -8,4 +8,3 @@ def add_vactor(u,v):
     return total
     
 print(add_vactor([0.5,10.5,0.5],[0.25,0.5,10.0]))
-    
